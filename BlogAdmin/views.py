@@ -42,6 +42,10 @@ def detail_data(request):
             id = request.GET['id']
             data['status'] = "success"
             data['data'] = list(models.Blog.objects.filter(id=id).values())
+            if len(data['data']) == 0:
+                print(id)
+                data['data'] = ['无此文章']
+                return JsonResponse(data,safe=False)
             return JsonResponse(data,safe=False)
         except:
             data['status'] = "fail"

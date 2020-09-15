@@ -27,6 +27,11 @@ class Category(MPTTModel):
     def __str__(self):
         return self.name
 
+# class Detail_content(models.Model):
+#     """
+#     博客详细内容
+#     """
+
 
 class Blog(models.Model):
     """
@@ -36,6 +41,7 @@ class Blog(models.Model):
     abstract = models.TextField(verbose_name='摘要', max_length=200, default='', blank=True)
     img = models.ImageField(upload_to='article_img/%Y/%m/%d/', verbose_name='文章图片', blank=True, null=True)
     content = models.TextField()
+    # content_id = models.IntegerField(verbose_name='文章id',default=0)
     create_time = models.DateTimeField(verbose_name='创建时间', default=datetime.now())
     modify_time = models.DateTimeField(verbose_name='修改时间', auto_now=True)
     click_nums = models.IntegerField(verbose_name='点击量', default=0)
