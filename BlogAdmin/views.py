@@ -35,6 +35,7 @@ def test(request):
         data["data"] = list(bloginfo)
         return JsonResponse(data, safe=False)
 
+
 def detail_data(request):
     if request.method == "GET":
         data = {}
@@ -45,10 +46,17 @@ def detail_data(request):
             if len(data['data']) == 0:
                 print(id)
                 data['data'] = ['无此文章']
-                return JsonResponse(data,safe=False)
-            return JsonResponse(data,safe=False)
+                return JsonResponse(data, safe=False)
+            return JsonResponse(data, safe=False)
         except:
             data['status'] = "fail"
             data['data'] = ['参数请求异常']
-            return JsonResponse(data,safe=False)
-            
+            return JsonResponse(data, safe=False)
+
+
+def head_img(request):
+    data = {}
+    if request.method == "GET":
+        data['status'] = 'success'
+        data['data'] = list(models.HeadImage.objects.all().values())
+        return JsonResponse(data, safe=False)
