@@ -29,8 +29,11 @@ def articles(request):
 def test(request):
     # 判断请求方法，并获取请求的参数
     if request.method == "GET":
-        # id = request.GET['id']
-        bloginfo = models.Blog.objects.all().values()
+        try:
+            num = request.GET['num']
+            bloginfo = models.Blog.objects.all().values()[:int(num)]
+        except:
+            bloginfo = models.Blog.objects.all().values()
         data = {}
         data["data"] = list(bloginfo)
         return JsonResponse(data, safe=False)
