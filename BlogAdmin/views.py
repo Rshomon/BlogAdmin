@@ -60,3 +60,13 @@ def head_img(request):
         data['status'] = 'success'
         data['data'] = list(models.HeadImage.objects.all().values())
         return JsonResponse(data, safe=False)
+
+
+def postreq(request):
+    if request.method == "POST":
+        print(json.loads(request.body.decode())['id'])
+        print("POST请求")
+        return HttpResponse("POST")
+    else:
+        print("GET请求")
+        return HttpResponse("GET")
