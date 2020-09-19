@@ -26,6 +26,12 @@ def articles(request):
     return HttpResponse("1111")
 
 
+""" 返回博客全部数据
+
+通过传来的参数分类加载
+"""
+
+
 def test(request):
     # 判断请求方法，并获取请求的参数
     if request.method == "GET":
@@ -37,6 +43,12 @@ def test(request):
         data = {}
         data["data"] = list(bloginfo)
         return JsonResponse(data, safe=False)
+
+
+"""文章详情页
+
+通过传来id返回
+"""
 
 
 def detail_data(request):
@@ -57,6 +69,10 @@ def detail_data(request):
             return JsonResponse(data, safe=False)
 
 
+"""图片加载
+"""
+
+
 def head_img(request):
     data = {}
     if request.method == "GET":
@@ -65,6 +81,7 @@ def head_img(request):
         return JsonResponse(data, safe=False)
 
 
+# 测试POST和GET请求的参数
 def postreq(request):
     if request.method == "POST":
         print(json.loads(request.body.decode())['id'])

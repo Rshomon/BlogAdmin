@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'Blog',
         # mysql账号密码
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '707615',
     }
 }
 
